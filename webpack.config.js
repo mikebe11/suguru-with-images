@@ -5,7 +5,9 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 let entry = path.resolve(__dirname, './src/index.jsx');
 let filename = 'bundle.js';
 
-module.exports = (env) => {
+module.exports = (env, argv) => {
+    const minimize = !(typeof argv.mode !== 'undefined' && argv.mode === 'development');
+
     if (typeof env !== 'undefined' && env.mobile === 'true') {
         entry = path.resolve(__dirname, './src/mobile/index.jsx');
         filename = 'mobileBundle.js';
@@ -39,7 +41,19 @@ module.exports = (env) => {
                     use: [
                         {loader: MiniCssExtractPlugin.loader},
                         {loader: 'css-loader'},
-                        {loader: 'postcss-loader'},
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                postcssOptions: {
+                                    plugins: [
+                                        [
+                                            'autoprefixer',
+                                            {'grid': 'autoplace'}
+                                        ]
+                                    ]
+                                }
+                            }
+                        },
                         {loader: 'sass-loader'}
                     ]
                 }
@@ -50,12 +64,13 @@ module.exports = (env) => {
         },
         plugins: [
             new MiniCssExtractPlugin({
-                filename: 'index.css'
+                filename: 'styles.css'
             })
         ],
         optimization: {
-            minimize: true,
+            minimize: minimize,
             minimizer: [
+                `...`,
                 new CssMinimizerPlugin({
                     minimizerOptions: {
                         preset: ['default', { discardComments: { removeAll: true } }]
