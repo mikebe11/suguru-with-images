@@ -6,10 +6,8 @@ import { useDrag } from 'react-dnd';
 
 function DraggableImage(props) {
     const [{isDragging}, drag] = useDrag({
-        item: {
-            type: 'piece',
-            id: props.imageFile
-        },
+        type: 'piece',
+        item: { id: props.imageFile },
         end: (item, monitor) => {
             if (monitor.didDrop()) {
                 props.updatePuzzlePiece(monitor.getDropResult().id, item.id);

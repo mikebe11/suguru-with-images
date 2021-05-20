@@ -10,12 +10,15 @@ export default function Trash(props) {
         })
     });
 
+    const preventDefault = (e) => e.preventDefault();
+
     const src = './images/wastebasket.png';
 
     return (
         <div
             ref={drop}
             id="trash"
+            onDrop={preventDefault}
             className={isOver ? 'trash-hover' : null}
         >
             <img

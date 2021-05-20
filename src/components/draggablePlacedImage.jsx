@@ -6,10 +6,8 @@ import { updatePuzzlePiece } from '../redux/actionCreators';
 
 function DraggablePlacedImage(props) {
     const [{isDragging}, drag] = useDrag({
-        item: {
-            type: 'set_piece',
-            id: props.cellID
-        },
+        type: 'set_piece',
+        item: { id: props.cellID },
         end: (item, monitor) => {
             if (monitor.didDrop()) {
                 props.updatePuzzlePiece(item.id, null);

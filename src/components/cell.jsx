@@ -14,6 +14,8 @@ export default function Cell(props) {
         })
     });
 
+    const preventDefault = (e) => e.preventDefault();
+
     let classes = ['cell', 'border-' + props.border];
 
     if (props.imageFile === null) {
@@ -27,6 +29,7 @@ export default function Cell(props) {
             <div
                 ref={drop}
                 id={props.id}
+                onDrop={preventDefault}
                 className={classes.join(' ')}
             />
         );
