@@ -20,7 +20,7 @@ Another build is available for mobile devices. It does not support drag and drop
 
 **Composer** - For the Mobile Detect library.
 
-**PHP** - For loading puzzles from the database.
+**PHP >=7.4** - For the Mobile Detect library and loading puzzles from the database.
 
 ## Configuration
 
@@ -29,5 +29,7 @@ In the project's root folder
     composer install
 
     npm install
+
+## Use
 
 In a browser open *index.php*
