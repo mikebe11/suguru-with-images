@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$detect = new Mobile_Detect;
+$detect = new Detection\MobileDetect;
 
 $mobile = ($detect->isMobile() || $detect->isTablet());
 

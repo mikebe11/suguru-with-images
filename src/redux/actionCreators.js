@@ -236,7 +236,17 @@ export const changePuzzle = (width, height, id) => (
     (dispatch, getState) => {
         dispatch(puzzleIsLoading);
 
-        const url = window.location.href + 'puzzles.php?id=' + id + '&w=' + width + '&h=' + height;
+        let url = window.location.href;
+
+        if (url.endsWith('.php')) {
+            let temp = window.location.pathname.split('/');
+
+            temp.pop();
+
+            url = window.location.origin + temp.join('/') + '/';
+        }
+
+        url += `puzzles.php?id=${id}&w=${width}&h=${height}`;
 
         return fetch(
                 url,

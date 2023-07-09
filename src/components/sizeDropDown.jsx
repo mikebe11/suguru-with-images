@@ -44,7 +44,7 @@ function SizeDropDown(props) {
     if (props.puzzleIsLoading) {
         clickHandler = null;
         style = {'lineHeight': 1};
-        buttonBody = <img src="./dist/loading.gif" alt="" />;
+        buttonBody = <img src="./images/loading.gif" alt="" />;
     }
 
     return (

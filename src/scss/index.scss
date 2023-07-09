@@ -336,11 +336,10 @@ button,
     }
 
     .button {
+        align-items: center;
+        display: flex;
+        justify-content: center;
         width: 70px;
-
-        img {
-            margin-top: 18px;
-        }
     }
 }
 
